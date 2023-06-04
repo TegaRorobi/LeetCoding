@@ -38,4 +38,4 @@ class Solution:
 
 
 sol = Solution()
-print(sol.generateParenthesis(2))
+print(sol.generateParenthesis(3))

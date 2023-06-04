@@ -1,22 +1,20 @@
+##########################################################
+
+# Time Complexity => O(n)
+# Space Complexity => O(1)
 def isPalindrome(s):
-	# here i am creating a custom function to check if a character is alphanumeric.
 	def isAlphaNumeric(char):
 		return ( 
-			ord(char) in range(ord('a'), ord('z')) or
-			ord(char) in range(ord('A'), ord('Z')) or
-			ord(char) in range(ord('0'), ord('9'))
+			ord('a') <= ord(char)  <= ord('z') or
+			ord('A') <= ord(char)  <= ord('Z') or
+			ord('0') <= ord(char)  <= ord('9')
 		)
-
-	# we could also use the below function but it would need importing a build in library.
-
-	# import string 
-	# def isAlphaNumeric(char):
-	# 	return char in string.ascii_letters+string.digits
 
 	l, r = 0, len(s)-1
 
-	# we will use two pointers to traverse the string
+	# we will use the two pointers to traverse the string
 	while l <= r:
+
 		while not isAlphaNumeric(s[l]):
 			l+=1
 		while not isAlphaNumeric(s[r]):
@@ -27,6 +25,22 @@ def isPalindrome(s):
 		else:
 			return False
 	return True
+
+s = 'A man, a plan, a canal; Panama...'
+print(isPalindrome(s))
+
+############################################################################
+
+
+# Time Complexity => O(n)
+# Space Complexity => O(n)
+def  isPalindrome(s):
+	new_str = ''
+	for c in s:
+		if c.isalnum():
+			new_str += c.lower()
+	return new_str == new_str[::-1]
+
 
 s = 'A man, a plan, a canal; Panama...'
 print(isPalindrome(s))
