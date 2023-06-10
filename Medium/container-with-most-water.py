@@ -8,7 +8,7 @@ def maxArea(height):
 	curr_max = 0 
 
 	while l < r:
-		# now we compute the area with the distance between the pointers and the limiting value
+		# now we compute the area with the distance between the pointers and the limiting height
 		area = (r-l) * min(height[l], height[r])
 		curr_max = max(curr_max, area)
 

@@ -22,7 +22,7 @@ def longestIncreasingSubsequence(nums):
 # positions after a current position to a list and then got the max of that
 # before registering it as the max of that position (which probably increased my time complexity)
 # instead of registering the max of that position on the go.
-def lenthtOfLIS(nums:list[int]) -> int: 
+def lengthOfLIS(nums:list[int]) -> int: 
 	LIS_stack = [1] * len(nums)
 
 
@@ -55,7 +55,7 @@ def lenthtOfLIS(nums:list[int]) -> int:
 
 # Time Complexity: O(n^2)
 # Space Complexity: O(n)
-def lenthtOfLIS2(nums:list[int]) -> int: 
+def lengthOfLIS2(nums:list[int]) -> int: 
 	LIS = [1] * len(nums) 
 
 	for i in range(len(nums)-1, -1, -1):
@@ -65,6 +65,18 @@ def lenthtOfLIS2(nums:list[int]) -> int:
 	return max(LIS)
 
 
+def lengthOfLIS3(nums:list[int]) -> int:
+	from bisect import bisect_left
+	stack = [nums.pop(0)]
 
-print(lenthtOfLIS2([7, -2, 0, -1, 8, 1, 2, 4])) # [-2, -1, 1, 2, 4]
-print(lenthtOfLIS2([7, 7, 7, 7, 7, 7, 7])) # this fails the condition where nums[j] > nums[i]
+	for n in nums:
+		if n > stack[-1]:
+			stack.append(n)
+		else:
+			stack[bisect_left(stack, n)] = n
+		print(stack, n)
+	return len(stack)
+
+
+print(lengthOfLIS3([5, 7, -2, 0, -1, 8, 1, 2, 4])) # [-2, -1, 1, 2, 4]
+# print(lengthOfLIS2([7, 7, 7, 7, 7, 7, 7])) # this fails the condition where nums[j] > nums[i]
