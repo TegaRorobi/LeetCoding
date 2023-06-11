@@ -31,7 +31,6 @@ def maximumSubarray(nums):
 		curr_sum += n
 		maxSum = curr_sum if curr_sum > maxSum else maxSum
 
-
 	return maxSum
 
 

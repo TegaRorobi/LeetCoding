@@ -12,4 +12,5 @@ def productExceptSelf(nums:list[int]) -> list[int]:
 		post *= nums[n-i-1]
 	return res 
 
-print(productExceptSelf([1,2 , 3, 4]))
+print(productExceptSelf([1, 2, 3, 4]))
+
