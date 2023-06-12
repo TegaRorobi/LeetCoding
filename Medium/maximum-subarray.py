@@ -10,7 +10,6 @@ def maximumSubarray(nums):
 		# 	maxSum = curr_sum if maxSum < curr_sum else maxSum
 	# return maxSum
 
-
 	# or
 
 	# O(n) alternative
