@@ -11,17 +11,6 @@ def maximumSubarray(nums):
 	# return maxSum
 
 
-	# O(n) Solution
-	# l = r = curr_sum = 0
-	# while r < len(nums):
-	# 	curr_sum += nums[r]
-	# 	maxSum = curr_sum if curr_sum > maxSum else maxSum
-	# 	if curr_sum < 0:
-	# 		curr_sum = 0
-	# 		l = r
-	# 	r+=1
-
-	
 	# or
 
 	# O(n) alternative

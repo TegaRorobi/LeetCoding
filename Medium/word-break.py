@@ -1,5 +1,5 @@
 
-# doesn't solve the problem completely and fails at some edge cases.
+# fails at some edge cases.
 def wordBreakCookieCutter(s:str, wordDict:list[str]) -> bool:
 	for word in wordDict:
 		while s.find(word) >= 0:
