@@ -32,34 +32,29 @@ vector<vector<int>> threeSum(vector<int> &nums, int target)
     vector<vector<int>> res;
     sort(nums.begin(), nums.end());
 
-    for (int i = 0; i < nums.size(); ++i)
-    {
-        if ((i>0)&&(nums[i] == nums[i-1])){
-            continue;
-        }
+    for (int i = 0; i < nums.size(); ++i){
 
-        int l=i+1, r=nums.size()-1;
+        if ((i>0)&&(nums[i] == nums[i-1])) 
+            continue;
+
+        int l = i+1;
+        int r = nums.size()-1;
 
         while(l < r){
-
             int threesum = nums[i] + nums[l] + nums[r];
-
-            if(threesum < target){
+            if(threesum < target)
                 l++;
 
-
-            } else if(threesum > target){
+            else if(threesum > target)
                 r--;
-
-
-            } else {
+            
+            else {
                 vector<int> ansVec = {nums[i], nums[l], nums[r]};
                 res.push_back(ansVec);
                 l++;
 
-                while ((l>0) && (nums[l]==nums[l-1])){
+                while ((l>0) && (nums[l]==nums[l-1]))
                     l++;
-                };
             }
 
         }
@@ -75,9 +70,8 @@ int main()
     for (vector<int> arr: res){
         cout << "[ ";
 
-        for (int num:arr){
+        for (int num:arr)
             cout << num << " ";
-        }
 
         cout << "]\n";
     }
