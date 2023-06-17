@@ -15,8 +15,8 @@ def maxArea(height):
 		# here we want to update the left pointer if it is the limiting pointer
 		if height[l] < height[r]:
 			l += 1
-		# here we also want to decrement the right pointer if it is the limiting pointer in 
-		# hope of finding a larger value. In an additional else case with this case, 
+		# here we also want to decrement the right pointer if it is the limiting pointer 
+		# in hope of finding a larger value. In an additional else case,
 		# where the values of both pointers are equal, we can move any of the pointers, 
 		# and that can be condensed into simply an else clause instead of elif and else
 		else:

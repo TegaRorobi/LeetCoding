@@ -47,3 +47,4 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
 print(combinationSum(candidates = [2,3,6,7], target = 7))
 print(combinationSum(candidates = [2,3,5], target = 8))
 print(combinationSum(candidates = [2], target = 1))
+print(combinationSum(candidates = [2, 3, 4, 3], target = 7))
