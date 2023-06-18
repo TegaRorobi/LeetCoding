@@ -24,3 +24,5 @@ def combinationSum2(candidates: list[int], target: int) -> list[list[int]]:
 
 print(combinationSum2(candidates = [10,1,2,7,6,1,5], target = 8))
 print(combinationSum2(candidates = [2, 5, 2, 1, 2], target = 5))
+print(combinationSum2(candidates = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], target=27))
+print('end main')
