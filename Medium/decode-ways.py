@@ -18,16 +18,17 @@ def numDecodings(s:str) -> int:
 	return dfs(0)
 	# '''
 
-
-	dp = [0] * (len(s)) + [1]
-	for i in range(len(s)-1, -1, -1):
-		if s[i]!='0':
-			dp[i] = dp[i+1]
-		if 10 <= int(s[i:i+2]) <= 27 :
-			dp[i] += dp[i+2]
-	print(dp)
+	# O(n) runtime, O(n) space
+	# dp = [0] * (len(s)) + [1]
+	# for i in range(len(s)-1, -1, -1):
+	# 	if s[i]!='0':
+	# 		dp[i] = dp[i+1]
+	# 	if 10 <= int(s[i:i+2]) <= 27 :
+	# 		dp[i] += dp[i+2]
+	# print(dp)
 	# return dp[0]
 
+	# O(n) runtime, O(1) space
 	curr_i, one, two = 0, 1, 0
 	for i in range(len(s)-1, -1, -1):
 		curr_i = 0 
