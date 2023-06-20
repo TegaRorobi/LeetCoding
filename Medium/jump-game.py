@@ -23,6 +23,6 @@ def canJump(nums:list[int]) -> bool:
 	return target == 0 
 
 
-print(canReachLastIndex([2, 3, 1, 1, 4]))
-print(canReachLastIndex([3, 2, 1, 0, 4]))
-print(canReachLastIndex([2, 5, 0, 0]))
+print(canJump([2, 3, 1, 1, 4]))
+print(canJump([3, 2, 1, 0, 4]))
+print(canJump([2, 5, 0, 0]))
