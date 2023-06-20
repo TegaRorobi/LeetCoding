@@ -18,9 +18,12 @@ def uniquePaths(m:int, n:int) -> int:
 
 
 	# O(m*n) runtime, O(n) space
-	dp = [0] * (n-1) + [1, 0]
-	for row in range(m):
-		for col in range(n-1, -1, -1):
+	# dp = [0] * (n-1) + [1, 0]
+	dp = [1] * n
+	# for row in range(m):
+	for row in range(m-1):
+		# for col in range(n-1, -1, -1):
+		for col in range(n-2, -1, -1):
 			dp[col] = dp[col+1] + dp[col]
 	return dp[0]
 
