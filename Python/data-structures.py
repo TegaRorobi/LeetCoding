@@ -15,3 +15,11 @@ class TreeNode:
         self.right = right 
     def __str__(self):
         return f"TreeNode(val={self.val}, left={self.left}, right={self.right})"
+
+
+# A Node i.e in a graph
+class Node:
+    def __init__(self, val=0, neighbors=None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not none else []
+        
