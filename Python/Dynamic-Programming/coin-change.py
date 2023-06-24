@@ -18,7 +18,7 @@
 # print(a.coinChange([1, 3, 4, 5], 7))
 
 
-# Dynamic programmint approach
+# Dynamic programming approach
 # Time complexity: O(m*n) where m is the amount and n is the length of the coins array
 # space complexity: O(n), where n is the amount
 def coinChange(coins, amount):

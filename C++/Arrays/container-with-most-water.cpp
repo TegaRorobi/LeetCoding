@@ -15,8 +15,10 @@ int maxArea(vector<int> heights){
 		int area = (r-l) * min(heights[r], heights[l]);
 		maxArea = max(maxArea, area);
 
-		if(heights[l] < heights[r]) ++l;
-		else --r;
+		if (heights[l] < heights[r]) 
+			++l;
+		else 
+			--r;
 	}
 
 	return maxArea;
