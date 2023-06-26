@@ -56,3 +56,4 @@ def mergeSort_iterative(array):
 print(mergeSort_iterative([4, 2, 8, 3, 6, 9, 1, 7]))
 print(mergeSort_iterative([10]))
 print(mergeSort_iterative([700, 100, 400, 300, 900, 200, 800, 500, 600]))
+print(mergeSort_iterative([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))
