@@ -4,7 +4,7 @@ using std::cout;
 
 int uniquePaths(int m, int n)
 {
-	int dp[n+1] = {};
+	int dp[n+1];
 	// populate the dp array with zeros
 	for (int i = 0; i <= n; ++i) dp[i]= (i==n-1)?1:0;
 
