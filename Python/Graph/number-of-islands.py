@@ -9,15 +9,16 @@ def numIslands(grid):
 	cols = len(grid[0])
 	
 	visited = set()
-	def explore(x, y):
-		if (x, y) not in visited and x<rows and y<cols and grid[x][y] == '1':
-			# explore the coordinate to the right and then mark it
-			explore(x+1, y)
-			visited.add((x+1, y))
-
-			# explore the coordinate to the bottom and then mark it
-			explore(x, y+1)
-			visited.add((x, y+1))
+	def explore(r, c):
+		visited.add((r, c))
+		if  grid[r][c] == "1":
+			directions = [(0,-1), (-1,0), (1,0), (0,1)]
+			for dr, dc in directions:
+				r1 = r+dr
+				c1 = c+dc
+				if -1<r1<rows and -1<c1<cols and (r1, c1) not in visited:
+					visited.add((r1, c1))
+					explore(r1, c1)
 
 	num_islands = 0
 	for r in range(rows):
@@ -29,22 +30,23 @@ def numIslands(grid):
 
 # bfs solution with a deque
 def numIslandsBFS(grid):
-	if not grid:
-		return 0
+	if not grid: return 0
 
 	rows = len(grid)
 	cols = len(grid[0])
 	visited = set()
 
 	from collections import deque
-	def bfs(x, y):
-		queue = deque([(x, y)])
+	def bfs(r, c):
+		queue = deque([(r, c)])
 		while queue:
-			x, y = queue.popleft()
-			if x<rows and y<cols and grid[x][y] == '1' and (x, y) not in visited:
-				queue.append((x+1, y))
-				queue.append((x, y+1))
-			visited.add((x, y))
+			r, c = queue.popleft()
+			if -1<r<rows and -1<c<cols and grid[r][c] == '1' and (r, c) not in visited:
+				queue.append((r+1, c)) # exploring the bottom
+				queue.append((r, c+1)) # exploring the right
+				queue.append((r-1, c)) # exploring the top
+				queue.append((r, c-1)) # exploring the left
+			visited.add((r, c))
 
 	num_islands = 0
 	for r in range(rows):
@@ -70,5 +72,20 @@ grid2 = [
 	['0', '0', '0', '1', '1']
 ]
 
+grid3 = [
+	["1", "1", "1"],
+	["0", "1", "0"],
+	["1", "1", "1"]
+]
+
+grid4 = [
+	["1", "1", "1", "1", "0"],
+	["1", "1", "0", "1", "0"],
+	["1", "1", "0", "0", "0"],
+	["0", "0", "0", "0", "0"]
+]
+
 print(numIslands(grid1))
-print(numIslandsBFS(grid2))
+print(numIslands(grid2))
+print(numIslands(grid3))
+print(numIslands(grid4))

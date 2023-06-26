@@ -1,11 +1,12 @@
 
-# Implementing the merge sort algorithm
+# MERGE SORT algorithm
+# O(nlogn) runtime complexity, O(n) space.
 def mergeSort_recursive(array):
 	if not array or len(array) == 1:
 		return array
-
-	sub1 = mergeSort_recursive(array[:(len(array)//2)])
-	sub2 = mergeSort_recursive(array[(len(array)//2):])
+	mid = len(array)//2
+	sub1 = mergeSort_recursive(array[:mid])
+	sub2 = mergeSort_recursive(array[mid:])
 
 	merged = []
 	while sub1 and sub2:

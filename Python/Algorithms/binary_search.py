@@ -11,7 +11,7 @@ def binarySearch(nums, target):
             r = midpoint-1
         else:
             return midpoint 
-
+    return -1
 
 
 nums = [43, 45, 54, 56, 61, 69, 72, 77, 82, 99, 103, 106, 111]
