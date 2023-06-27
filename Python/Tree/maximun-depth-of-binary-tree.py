@@ -14,6 +14,7 @@ def maxDepth(root:TreeNode) -> int:
 
 
 # FIFO
+# this algorithm visits the nodes in a pre-order fashion
 def maxDepth_iterative_dfs(root:TreeNode) -> int:
 	if not root: return 0
 	res = 0
