@@ -114,4 +114,4 @@ def reorderList(head):
 
 listnode1 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6))))))
 listnode2 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-print(reorderList2(listnode1))
+print(reorderList(listnode1))

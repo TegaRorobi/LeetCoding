@@ -24,8 +24,8 @@ def sumNodeDepths(root):
 
 # this solution is not optimal, all i need for the result is an integer and
 # since I can't pass in the integer by reference like in C or C++, and since
-# integers are immutable and strings are so I am just appending the number of
-# times the original integer should be there
+# integers are immutable and lists are so I am just appending to the list
+# the number of times the original integer would have been.
 '''
 def sumNodeDepths_recursive(root):
 	res = []
