@@ -11,6 +11,7 @@ class TreeNode:
 def inorderTraversal(root: TreeNode) -> list[int]:
 	return inorderTraversal(root.left) + [root.val] + inorderTraversal(root.right) if root else []
 
+
 def inorderTraversal2(root: TreeNode) -> list[int]:
 	result = []
 	def dfs(node):
@@ -22,6 +23,19 @@ def inorderTraversal2(root: TreeNode) -> list[int]:
 	if root:
 		dfs(root)
 	return result
+
+def inorderTraversal_Iterative(root: TreeNode) -> list[int]:
+	res = []
+	stack = []
+	while stack or root:
+		if root:
+			stack.append(root)
+			root = root.left 
+		else:
+			node = stack.pop()
+			res.append(node.val)
+			root = node.right
+	return res
 
 
 tree = TreeNode(
@@ -38,14 +52,19 @@ tree = TreeNode(
 	)
 )
 
-print(inorderTraversal2(tree))
-def dfs(node):
-	stack = [node]
-	while stack:
-		node = stack.pop()
-		print(node.val)
-		if node.right:
-			stack.append(node.right)
-		if node.left:
-			stack.append(node.left)
-dfs(tree)
+#       4
+#     /   \
+#    2     5
+#   /  \     
+#  1    3
+print(inorderTraversal_Iterative(tree))
+# def dfs(node):
+# 	stack = [node]
+# 	while stack:
+# 		node = stack.pop()
+# 		print(node.val)
+# 		if node.right:
+# 			stack.append(node.right)
+# 		if node.left:
+# 			stack.append(node.left)
+# dfs(tree)
