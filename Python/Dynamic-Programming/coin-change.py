@@ -22,12 +22,16 @@
 # Time complexity: O(m*n) where m is the amount and n is the length of the coins array
 # space complexity: O(n), where n is the amount
 def coinChange(coins, amount):
-   dp = [0] + [amount+1] * (amount)
-   for i in range(1, amount+1):
-      for coin in coins:
-         if i-coin >= 0:
-            dp[i] = min(dp[i], 1+dp[i-coin])
+   	dp = [0] + [amount+1] * (amount)
+   	for i in range(1, amount+1):
+      	for coin in coins:
+         	if i-coin >= 0:
+            	dp[i] = min(dp[i], 1+dp[i-coin])
    return dp[amount] if dp[amount] != amount+1 else -1
     
+
+
+
+
 
 print(coinChange([1, 3, 4, 5], 7))

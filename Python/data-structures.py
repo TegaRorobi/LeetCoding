@@ -15,6 +15,7 @@ class TreeNode:
         self.right = right 
     def __str__(self):
         return f"TreeNode(val={self.val}, left={self.left}, right={self.right})"
+        
 # a sample tree
 tree = TreeNode(
     val=9, 

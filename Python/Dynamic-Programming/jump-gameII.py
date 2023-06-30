@@ -16,7 +16,7 @@ def jump(nums:list[int]) -> int:
 			if dp[j] != -1:
 				minJumpsToEnd = dp[j] if dp[j] < minJumpsToEnd else minJumpsToEnd
 		dp[i] = 1+minJumpsToEnd
-	# print(dp)
+	print(dp)
 	return dp[0]
 
 
