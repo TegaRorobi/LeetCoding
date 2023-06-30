@@ -1,5 +1,5 @@
 # for a postorder binary tree traversal, for ANY given node, 
-# all the parent nodes are processed first, usually left then right
+# all the child nodes are processed first, usually left then right
 # before that node. therefore the first node to be procesed is the 
 # leftmost node in relation to the root node and the last node to be
 # processed is the root node.
@@ -57,6 +57,7 @@ def postorderTraversal_Iterative2(root):
 	ans = []
 	while True:
 		while root:
+			# the second value means whether or not we are done processing the right of the node.
 			stack.append((root, False))
 			root = root.left 
 
