@@ -48,6 +48,7 @@ int main()
 	cout << "Length of longest common subsequence between \"" 
 		<< txt1 << "\" and \"" << txt2 << "\" is "
 		<< soln.longestCommonSubsequence(txt1, txt2) << endl;
+	return 0;
 }
 
 

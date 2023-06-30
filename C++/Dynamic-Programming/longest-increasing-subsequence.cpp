@@ -27,4 +27,6 @@ int lengthOfLIS(vector<int> nums) {
 int main() {
 	vector<int> nums = {5, 7, -2, 0, -1, 8, 1, 2, 4};
 	std::cout << lengthOfLIS(nums);
+
+	return 0;
 }
