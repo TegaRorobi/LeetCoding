@@ -24,6 +24,10 @@ def isValidBST(root) -> bool:
 			return False
 	return True
 
+
+# iterative dfs traversal, keeping track of the least value each node in the stack has to be less than
+# and also keeping track of the greatest value each node in the stack has to be greater than for the 
+# tree to be valid.
 def isValidBST2(root) -> bool:
 	if not root:
 		return False
@@ -38,6 +42,26 @@ def isValidBST2(root) -> bool:
 		else:
 			return False
 	return True
+
+# iterative in-order traversal, each value has to be less than the previous value we encountered
+# default is negative infinity
+def isValidBST3(root) -> bool:
+	if not root:
+		return False
+	stack = []
+	prev = float("-inf")
+	while stack or root:
+		if root:
+			stack.append(root)
+			root = root.left 
+		else:
+			node = stack.pop()
+			if node.val <= prev:
+				return False
+			prev = node.val
+			root = node.right 
+	return True
+
 
 
 tree1 = TreeNode(
@@ -91,6 +115,6 @@ tree3 = TreeNode(
 #            /   \
 #           3     7
 
-print(isValidBST2(tree1))
-print(isValidBST2(tree2))
-print(isValidBST2(tree3))
+print(isValidBST3(tree1))
+print(isValidBST3(tree2))
+print(isValidBST3(tree3))

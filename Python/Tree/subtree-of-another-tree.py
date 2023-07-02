@@ -45,25 +45,32 @@ def isSubtree(root: TreeNode, subRoot: TreeNode) -> bool:
 # recursive solution
 # on leetcode, the runtime of this solution beats 17%, but the memory beats 9%
 def isSubtree2(root: TreeNode, subRoot: TreeNode) -> bool:
+	# this is a leetcode problem solution by itself
 	def isSame(a, b):
 		if a is None and b is None:
 			return True 
-		if a is None or b is None:
+		if a is None or b is None or a.val!=b.val:
 			return False 
-		if a.val == b.val:
-			return isSame(a.left, b.left) and isSame(a.right, b.right)
-		return False
+		return isSame(a.left, b.left) and isSame(a.right, b.right)
 
-	if not root: return False
+	if not root: 
+		return root==subRoot
 	if isSame(root, subRoot):
 		return True 
-	return isSubtree(root.left, subRoot) or isSubtree(root.right, subRoot)
+	return isSubtree2(root.left, subRoot) or isSubtree2(root.right, subRoot)
+
+
 
 tree1 = TreeNode(val=1, left=TreeNode(1))
 tree2 = TreeNode(1)
+print(isSubtree2(tree1, tree2))
+
 
 tree3 = TreeNode(val=1, left=TreeNode(2), right=TreeNode(3))
 tree4 = TreeNode(val=1, left=TreeNode(2))
-
-print(isSubtree2(tree1, tree2))
 print(isSubtree2(tree3, tree4))
+
+
+tree5 = TreeNode(val=1, left=TreeNode(2), right=TreeNode(3))
+tree6 = None
+print(isSubtree2(tree5, tree6))
