@@ -23,12 +23,41 @@ def kthSmallest(root: TreeNode, k: int) -> int:
             root = node.right
 
 
-tree = TreeNode(
+tree1 = TreeNode(
 	val = 2,
-	left=TreeNode(
-		val=1),
-	right = TreeNode(
-		val=3)
-	)
+	left=TreeNode(1),
+	right = TreeNode(3)
+)
+#           2
+#         /   \
+#        1     3
+print(kthSmallest(tree1, 2))
 
-print(kthSmallest(tree, 2))
+
+
+
+tree2 = TreeNode(
+	val=6,
+	left=TreeNode(
+		val=2, 
+		left=TreeNode(0),
+		right=TreeNode(
+			val=4,
+			left=TreeNode(3),
+			right=TreeNode(5)
+		)
+	),
+	right=TreeNode(
+		val=8, 
+		left=TreeNode(7),
+		right=TreeNode(9)
+	)
+)
+#             6
+#           /   \
+#         2       8
+#        / \     / \
+#       0   4   7   9
+#          / \
+#         3   5
+print(kthSmallest(tree2, 5))

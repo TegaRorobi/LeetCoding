@@ -115,6 +115,24 @@ tree3 = TreeNode(
 #            /   \
 #           3     7
 
-print(isValidBST3(tree1))
-print(isValidBST3(tree2))
-print(isValidBST3(tree3))
+# print(isValidBST3(tree1))
+# print(isValidBST3(tree2))
+# print(isValidBST3(tree3))
+tree = TreeNode(
+	val=6,
+	left=TreeNode(
+		val=2, 
+		left=TreeNode(0),
+		right=TreeNode(
+			val=4,
+			left=TreeNode(3),
+			right=TreeNode(5)
+		)
+	),
+	right=TreeNode(
+		val=8, 
+		left=TreeNode(7),
+		right=TreeNode(9)
+	)
+)
+print(isValidBST3(tree))
