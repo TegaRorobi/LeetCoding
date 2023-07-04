@@ -26,13 +26,13 @@ def exist1(board:list[list[int]], word:str) -> bool:
 
 # we don't need a visited set
 def exist2(board:list[list[str]], word:str) -> bool:
-	rows = len(board)
-	cols = len(board[0])
-	# all i need here is a boolean, but those aren't mutable so... :(
-	found = [False]
+	rows, cols = len(board), len(board[0])
+	# just found out the 'nonlocal' keyword in python... :(
+	found = False
 	def dfs(r, c, pos):
 		if pos == len(word)-1: 
-			found[0] = True 
+			nonlocal found
+			found = True 
 			return
 
 		directions = [(-1, 0), (0, -1), (1, 0), (0, 1)]
@@ -50,7 +50,7 @@ def exist2(board:list[list[str]], word:str) -> bool:
 				board[r][c] = '#'
 				dfs(r, c, 0)
 				board[r][c] = word[0]
-	return found[0]
+	return found
 
 
 
@@ -95,5 +95,5 @@ board2 = [
 	['A', 'G', 'E', 'T'], 
 	['E', 'R', 'A', 'R']
 ]
-print(exist1(board1, "ABCCED"))
-print(exist1(board2, "RARE"))
+print(exist2(board1, "ABCCED"))
+print(exist2(board2, "RARE"))

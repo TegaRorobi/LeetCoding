@@ -42,9 +42,60 @@ tree = TreeNode(
 #    /
 #   42
 
+# a binary search tree
+tree = TreeNode(
+    val=6,
+    left=TreeNode(
+        val=2, 
+        left=TreeNode(0),
+        right=TreeNode(
+            val=4,
+            left=TreeNode(3),
+                right=TreeNode(5)
+            )
+    ),
+    right=TreeNode(
+        val=8, 
+        left=TreeNode(7),
+        right=TreeNode(9)
+    )
+)
+
+
 # A Node i.e in a graph
 class Node:
     def __init__(self, val=0, neighbors=None):
         self.val = val
         self.neighbors = neighbors if neighbors is not none else []
         
+
+# A trie node i.e from word search II
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.isWord = False
+    def addWord(self, word):
+        cur = self 
+        for c in word:
+            if c not in cur.children:
+                cur.children[c] = TrieNode()
+            cur = cur.children[c]
+        cur.isWord = True
+
+
+# a trie's separate class dictnode
+class DictNode:
+    isWord = False
+    children = {}
+    
+# the actual trie
+class Trie:
+    def __init__(self):
+        self.root = DictNode
+    def addWord(self, word):
+        curr = self.root 
+        for char in word:
+            if char not in curr.children:
+                curr.children[char] = DictNode()
+            curr = curr.children[char]
+        curr.isWord = True
