@@ -91,7 +91,7 @@ class DictNode:
 # the actual trie
 class Trie:
     def __init__(self):
-        self.root = DictNode
+        self.root = DictNode()
     def addWord(self, word):
         curr = self.root 
         for char in word:
