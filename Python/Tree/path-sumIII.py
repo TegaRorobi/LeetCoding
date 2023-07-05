@@ -58,6 +58,25 @@ def pathSum2(root: TreeNode, targetSum: int) -> int:
     return res
 
 
+# recursive solution
+def pathSum3(root: TreeNode, targetSum: int) -> int:
+    res = 0
+    def dfs(node, curr, path):
+        curr_sum = curr 
+        for num in path:
+            if curr == targetSum:
+                nonlocal res 
+                res += 1
+            curr -= num 
+        if node.left: 
+            dfs(node.left, curr_sum+node.left.val, path+[node.left.val])
+        if node.right: 
+            dfs(node.right, curr_sum+node.right.val, path+[node.right.val])
+    if root:
+        dfs(root, root.val, [root.val])
+    return res
+
+
 
 tree = TreeNode(
     val=10,
@@ -91,6 +110,6 @@ tree2 = TreeNode(
     left=TreeNode(1),
     right=TreeNode(1)
 )
-# print(pathSum(tree, 7))
-# print(pathSum2(tree, 7))
-print(pathSum2(tree2, 1))
+print(pathSum3(tree, 8))
+print(pathSum3(tree, 7))
+print(pathSum3(tree2, 1))
