@@ -23,10 +23,11 @@ def insert(intervals: list[list[int]], newInterval: list[int]) -> list[list[int]
 "an alternative method to solving this problem by Stephen Pochmann"
 "A lot more elegant, but more expensive and kind of slower"
 def insert2(intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
-	left = [i for i in intervals if i[1] < newInterval[0]]
-	right = [i for i in intervals if i[0] > newInterval[1]]
-	s = min(newInterval[0], intervals[len(left)][0])
-	e = max(newInterval[1], intervals[~len(right)][1])
+	s, e = newInterval[0], newInterval[1]
+	left = [i for i in intervals if i[1] < s]
+	right = [i for i in intervals if i[0] > e]
+	s = min(s, intervals[len(left)][0])
+	e = max(e, intervals[~len(right)][1])
 	return left + [[s, e]] + right
 
 
