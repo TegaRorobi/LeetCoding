@@ -30,27 +30,39 @@ def findOrder(numCourses:int, prerequisites:list[list[int]]) -> list[int]:
 	return res
 
 
-
+# we don't need a visited and cycle set
 def findOrder2(numCourses:int, prerequisites:list[list[int]]) -> list[int]:
-	hashmap = {key:[] for key in range(numCourses)}
+	adj = {key:[] for key in range(numCourses)}
 	for crs, pre in prerequisites: 
-		hashmap[crs].append(pre)
-	print(hashmap)
+		adj[crs].append(pre)
 	
-
 	def dfs(crs, visited, res):
-		if crs in visited:
-			return 
-		visited.add(crs)
-		for prereq in hashmap[crs]:
-			if dfs(prereq, visited, res) is False:
-				return 
+		if visitMap[crs] == 1:
+			return True
+		elif visitMap[crs] == -1:
+			return False
+
+		"""
+		if visitMap[crs] is:
+			-1, then we are currently running a dfs on that course, i.e that course is currently on the call stack
+			0, then we haven't explored that course before. (at this point we start a new dfs on that course)
+			1, then we are done with that course and we have explored all it's children and added them all to the result
+		"""
+
+		visitMap[crs] = -1
+		for prereq in adj[crs]:
+			if visitMap[prereq] == -1 or dfs(prereq, visited, res) is False:
+				return False
+		visitMap[crs] = 1
 		res.append(crs)
+		return True
 
 	res = []
-	visited = set()
+	visitMap = {key:0 for key in range(numCourses)}
+
 	for i in range(numCourses):
-		dfs(i, visited, res)
+		if visitMap[i]==0 and not dfs(i, visitMap, res):
+			return []
 	return res
 
 
