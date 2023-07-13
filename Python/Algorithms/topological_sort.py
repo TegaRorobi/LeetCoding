@@ -10,11 +10,11 @@ class Graph:
 		self.__adj[u].append(v)
 
 
-	def topologicalSort_util(self, node, visited, stack):
+	def dfs(self, node, visited, stack):
 		visited.add(node)
 		for nxt in self.__adj[node]:
 			if nxt not in visited:
-				self.topologicalSort_util(nxt, visited, stack)
+				self.dfs(nxt, visited, stack)
 		stack.append(node)
 		
 
@@ -23,7 +23,7 @@ class Graph:
 		visited = set()
 		for node in range(self.__n_vertices):
 			if node not in visited:
-				self.topologicalSort_util(node, visited, stack)
+				self.dfs(node, visited, stack)
 		return stack[::-1]
 
 
