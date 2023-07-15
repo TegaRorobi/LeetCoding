@@ -8,10 +8,7 @@ using std::endl;
 
 
 bool dfs(int node, vector<int> adj[], vector<int>& visited, vector<int>& res) {
-	if (visited[node] == -1)
-		return false;
-
-	else if (visited[node] == 1)
+	if (visited[node] == 1)
 		return true;
 
 	visited[node] = -1;
