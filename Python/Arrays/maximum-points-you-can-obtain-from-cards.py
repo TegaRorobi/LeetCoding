@@ -16,9 +16,10 @@ class Solution:
 # print(a.maxScore([1,2,3,4,5,6,1], 3))
 
 
-# first of all select all cards from the left and then gradually remove the innermost 
-# card on the left and select one more on the right, this way we get all possible ways
-# we can select k cards.
+# first of all, select all the cards on the right. (imagining we took cards only from the right)
+# next, remove the outermost card on the right from consideration, and then take the outermost one on the left.
+# continue removing from the right and taking from the left and keep recording the total as you go. We are done 
+# when we now have all cards from the left and no more right cards.
 def maxScore(cardPoints: list[int], k:int) -> int:
 	l, r = 0, len(cardPoints)-k
 	res = outside = sum(cardPoints[r:])
@@ -32,7 +33,7 @@ def maxScore(cardPoints: list[int], k:int) -> int:
 
 
 # the difference is that we just select all cards from the left first and then we 
-# progress to the right.
+# progress to selecting right cards.
 def maxScore2(cardPoints: list[int], k:int) -> int:
 	l, r = k-1, len(cardPoints)-1
 	res = total = sum(cardPoints[:k])
@@ -42,6 +43,18 @@ def maxScore2(cardPoints: list[int], k:int) -> int:
 		l, r = l-1, r-1
 	return res
 
+
+'''
+k=3
+
+1, 2, 3, {4, 5, 6, 1} points=6
+
+1, 2, {3, 4, 5, 6}, 1 points=4
+
+1, {2, 3, 4, 5}, 6, 1 points=8
+
+{1, 2, 3, 4}, 5, 6, 1 points=12
+'''
 
 print(maxScore2([1,2,3,4,5,6,1], 3))
 print(maxScore2([9,7,7,9,7,7,9], 7))
