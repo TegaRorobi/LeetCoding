@@ -41,13 +41,26 @@ def maxProduct2(nums:list[int]) -> int:
     return max(list(zip(*dp))[1])
 
 
-# O(n) runtime, O(1) space
-def maxProduct(nums:list[int]) -> int:
+# O(n) runtime, O(1) space, reverse iteration with pointer indices
+def maxProduct1(nums:list[int]) -> int:
     if len(nums) == 1: return nums[0]
     mini = maxi = maxP = nums[-1]
     
     for i in range(len(nums)-2, -1, -1):
         choices = nums[i], nums[i]*mini, nums[i]*maxi
+        mini = min(choices)
+        maxi = max(choices)
+        maxP = max(maxP, maxi)
+    return maxP
+
+
+# O(n) runtime, O(1) space, forward iteration without indices
+def maxProduct(nums:list[int]) -> int:
+    if len(nums)==1:return nums[0]
+    mini = maxi = maxP = nums[0]
+
+    for n in nums[1:]:
+        choices = n, n*mini, n*maxi
         mini = min(choices)
         maxi = max(choices)
         maxP = max(maxP, maxi)
