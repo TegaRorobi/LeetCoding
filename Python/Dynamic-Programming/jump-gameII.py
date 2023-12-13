@@ -1,24 +1,48 @@
 
-def jump(nums:list[int]) -> int:
-	'Time complexity: O(n^2)'
-	'Space complexity: O(n)'
-	len_nums = len(nums)
+"""
+Problem statement:
+------------------
+You are given a 0-indexed array of integers nums of length n. You are initially positioned at nums[0].
 
-	# having -1 as the value of an index in the dp array means that we 
-	# can not get to the end if we jump to that index, hence it's the default
-	dp = [-1] * (len_nums-1) + [0] 
-	# since we will be adding 1 to the cached value from the subproblem, 
-	# we might as well just use 0 as the base case.
+Each element nums[i] represents the maximum length of a forward jump from index i. In other words,
+if you are at nums[i], you can jump to any nums[i + j] where:
 
-	for i in range(len_nums-2, -1, -1):
-		minJumpsToEnd = 10**4
-		for j in range(i+1, min(len_nums, i+nums[i]+1)):
-			if dp[j] != -1:
-				minJumpsToEnd = dp[j] if dp[j] < minJumpsToEnd else minJumpsToEnd
-		dp[i] = 1+minJumpsToEnd
-	print(dp)
-	return dp[0]
+0 <= j <= nums[i] and
+i + j < n
+Return the minimum number of jumps to reach nums[n - 1]. The test cases are generated such that you can reach nums[n - 1].
 
 
-print(jump([2, 3, 1, 1, 4]))
-print(jump([2, 5, 0, 0]))
+Approach:
+---------
+For this solution, I'll create a dp array, which I'll iterate over in reverse. This is done like so, because I'll be using a 
+dynamic programming approach. The smaller problem is getting the minimum number of jumps from a location closer to the target.
+If I have that, I can get the minimum number of jumps from a farther place by calculating all my possible jump locations, 
+and jump to the spot that has the least number of jumps to the end by adding one jump (from the current position). Continuing 
+in this simple fashion, the answer would be the value of the dp array at the first index.
+
+Complexity:
+-----------
+Time: O(n^2)
+Space: O(n)
+"""
+
+from typing import List
+
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [-1] * (n-1) + [0]
+        for i in range(n-2, -1, -1):
+            minJumpsToEnd = n-1
+            end_ind = min(i+nums[i]+1, n)
+            for j in range(i+1, end_ind):
+                jump = dp[j]
+                minJumpsToEnd = jump if jump < minJumpsToEnd else minJumpsToEnd
+            dp[i] = 1+minJumpsToEnd
+        return dp[0]
+
+
+soln = Solution()
+print(soln.jump([2, 3, 1, 1, 4]))
+print(soln.jump([2, 3, 0, 1, 4]))
+print(soln.jump([2, 1, 0, 0]))
