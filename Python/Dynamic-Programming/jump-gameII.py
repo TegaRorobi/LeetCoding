@@ -17,13 +17,17 @@ Approach:
 For this solution, I'll create a dp array, which I'll iterate over in reverse. This is done like so, because I'll be using a 
 dynamic programming approach. The smaller problem is getting the minimum number of jumps from a location closer to the target.
 If I have that, I can get the minimum number of jumps from a farther place by calculating all my possible jump locations, 
-and jump to the spot that has the least number of jumps to the end by adding one jump (from the current position). Continuing 
-in this simple fashion, the answer would be the value of the dp array at the first index.
+and jump to the spot that has the least number of jumps. The jump count will be determined by adding one jump (from the current position)
+to the calculated best spot. Continuing in this simple fashion, the answer would be the value of the dp array at the first index.
 
 Complexity:
 -----------
-Time: O(n^2)
-Space: O(n)
+Time: O(n^2) => 
+    It's possible that every position can jump to the target, and we evaluate 
+    the jumps to all positions in front of a given starting point)
+
+Space: O(n) => 
+    The dp array
 """
 
 from typing import List
