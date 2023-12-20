@@ -63,7 +63,7 @@ from typing import List
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         ln = len(nums)
-        res = [-1] * len(nums)
+        res = [-1] * ln
         curr = 1
         i = 0
         while i < ln:
@@ -78,7 +78,25 @@ class Solution:
             i -= 1
         return res
 
+    #Truly O(n) solution, we update from the front and the back simultaneously
+    def productExceptSelf2(self, nums: List[int]) -> List[int]:
+        ln = len(nums)
+        res = [1] * ln
+        pre = 1
+        post = 1
+        i = 0
+        while i < ln:
+            res[i] *= pre
+            pre *= nums[i]
+
+            res[ln-1-i] *= post
+            post *= nums[ln-1-i]
+
+            i += 1
+        return res
+
+
 
 soln = Solution()
-print(soln.productExceptSelf([1,2,3,4]))
-print(soln.productExceptSelf([-1,1,0,-3,3]))
+print(soln.productExceptSelf2([1,2,3,4]))
+print(soln.productExceptSelf2([-1,1,0,-3,3]))
